@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Download Center</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* A very dark grey */
+            color: #e5e7eb; /* Light gray text */
+        }
+
+        /* Main wrapper to structure the page with a sticky footer */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* The main content area will grow to push the footer down */
+        .content-grow {
+            flex-grow: 1;
+        }
+
+        /* List Container Styling */
+        .list-container {
+            background-color: #1c1c1c;
+            border: 1px solid #2d2d2d;
+        }
+
+        /* Category Header Styling */
+        .category-header {
+            border-bottom: 1px solid #2d2d2d;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Software Item Hover Effect */
+        .software-item:hover {
+            background-color: #252525;
+        }
+
+        /* Custom Checkbox Styling */
+        .custom-checkbox {
+            appearance: none;
+            background-color: transparent;
+            border: 2px solid #4a4a4a;
+            border-radius: 4px;
+            width: 1.25rem;
+            height: 1.25rem;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease-in-out;
+            flex-shrink: 0;
+        }
+        .custom-checkbox:checked {
+            background-image: linear-gradient(45deg, #4f46e5, #7c3aed);
+            border-color: #6d28d9;
+        }
+        .custom-checkbox:checked::after {
+            content: '✓';
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        /* Main action buttons styling */
+        .main-action-btn {
+            transition: all 0.3s ease-in-out;
+        }
+         .main-action-btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
+         }
+         
+        /* Modal styles */
+         .modal-content {
+             max-height: 80vh;
+             overflow-y: auto;
+         }
+         
+        /* Code snippet styling */
+        .code-block {
+            background-color: #111;
+            border: 1px solid #2d2d2d;
+        }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <div class="page-wrapper">
+        <div class="content-grow flex flex-col items-center p-4 sm:p-8">
+            <!-- Header Section -->
+            <header class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Software Download Center</h1>
+                <p class="text-lg text-gray-400">Discover and download your favorite applications</p>
+            </header>
+
+            <!-- Download All Section -->
+            <section class="text-center mb-10 w-full max-w-lg">
+                <button id="download-selected" class="main-action-btn w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg flex items-center justify-center mx-auto disabled:opacity-50">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Selected
+                </button>
+            </section>
+
+            <!-- Software List Layout -->
+            <main class="w-full max-w-4xl space-y-8">
+                <!-- Web Browsers -->
+                <div class="category-card rounded-lg p-6">
+                    <h2 class="category-header text-xl font-bold text-white">🌐 Web Browsers</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://gitlab.com/api/v4/projects/44042130/packages/generic/librewolf/128.0.3-2/librewolf-128.0.3-2-windows-x86_64-setup.exe"><span>LibreWolf</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.opera.com/computer/thanks?ni=stable&os=windows"><span>Opera</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.mozilla.org/en-US/firefox/download/thanks/"><span>Firefox</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.google.com/intl/en/chrome/next-steps.html?statcb=1&installdataindex=empty&defaultbrowser=0#"><span>Chrome</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://laptop-updates.brave.com/download/BRV002"><span>Brave</span></label>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="category-card rounded-lg p-6">
+                    <h2 class="category-header text-xl font-bold text-white">💬 Communication</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://discord.com/download"><span>Discord</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://go.skype.com/skype.download"><span>Skype</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://telegram.org/dl/desktop/win64"><span>Telegram</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://zoom.us/download"><span>Zoom</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.microsoft.com/en-us/microsoft-teams/download-app"><span>Teams</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://pidgin.im/"><span>Pidgin</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.thunderbird.net/"><span>Thunderbird</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.trillian.im/"><span>Trillian</span></label>
+                    </div>
+                </div>
+                
+                <!-- Security -->
+                <div class="category-card rounded-lg p-6">
+                    <h2 class="category-header text-xl font-bold text-white">🔐 Security</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-3">
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.malwarebytes.com/"><span>Malwarebytes</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.avast.com/"><span>Avast</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.avg.com/"><span>AVG</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.safer-networking.org/"><span>Spybot 2</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.avira.com/"><span>Avira</span></label>
+                        <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.superantispyware.com/"><span>SUPERAntiSpyware</span></label>
+                    </div>
+                </div>
+
+                <!-- Media, Utilities, & Configs -->
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">🎵 Media</h2>
+                        <div class="space-y-3">
+                           <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.videolan.org/vlc/"><span>VLC</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.spotify.com/download/"><span>Spotify</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.audacityteam.org/download/"><span>Audacity</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://handbrake.fr/"><span>HandBrake</span></label>
+                        </div>
+                    </div>
+                    <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">🗜️ Utilities</h2>
+                        <div class="space-y-3">
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.7-zip.org/download.html"><span>7-Zip</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.ccleaner.com/ccleaner/download"><span>CCleaner</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.winrar.com/download.html"><span>WinRAR</span></label>
+                        </div>
+                    </div>
+                    <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">⚙️ Configs</h2>
+                        <div class="space-y-3">
+                            <button id="vscode-config-btn" class="software-item w-full text-left flex items-center space-x-3 cursor-pointer p-2 rounded-md">
+                                <span>VS Code Debugger</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Development Tools, Creative Tools and Online Storage -->
+                 <div class="grid md:grid-cols-3 gap-6">
+                    <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">💻 Dev Tools</h2>
+                        <div class="space-y-3">
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://code.visualstudio.com/download"><span>VS Code</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://git-scm.com/download/win"><span>Git</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://nodejs.org/en/download/"><span>Node.js</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.python.org/downloads/"><span>Python 3</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://notepad-plus-plus.org/"><span>Notepad++</span></label>
+                        </div>
+                    </div>
+                     <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">🎨 Creative</h2>
+                        <div class="space-y-3">
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.gimp.org/downloads/"><span>GIMP</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://obsproject.com/download"><span>OBS Studio</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.blender.org/download/"><span>Blender</span></label>
+                        </div>
+                    </div>
+                    <div class="category-card rounded-lg p-6">
+                        <h2 class="category-header text-xl font-bold text-white">💿 Storage</h2>
+                        <div class="space-y-3">
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.dropbox.com/download"><span>Dropbox</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.google.com/drive/download/"><span>Google Drive</span></label>
+                            <label class="software-item flex items-center space-x-3 cursor-pointer p-2 rounded-md"><input type="checkbox" class="custom-checkbox" name="software" value="https://www.microsoft.com/en-us/microsoft-365/onedrive/download"><span>OneDrive</span></label>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-500 text-sm">
+            <p>&copy; <span id="current-year"></span> @royverse</p>
+        </footer>
+    </div>
+    
+    <!-- VS Code launch.json Modal -->
+    <div id="vscode-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-[#1c1c1c] border border-[#2d2d2d] rounded-lg w-full max-w-2xl relative">
+            <button id="close-vscode-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="modal-content p-6 text-left">
+                <h2 class="text-2xl font-bold text-white mb-4 text-center">VS Code Debugger for Chrome</h2>
+                <div class="relative">
+                    <div id="code-snippet-container" class="code-block p-4 rounded-md text-sm text-gray-300 overflow-x-auto">
+<pre><code>{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}</code></pre>
+                    </div>
+                    <button id="copy-code-btn" class="absolute top-2 right-2 bg-[#373737] text-white text-xs font-semibold py-1 px-3 rounded-md hover:bg-[#4a4a4a] transition-colors">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // --- Static Setup ---
+        // Set the current year in the footer automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Download Functionality ---
+        document.getElementById("download-selected").addEventListener("click", function() {
+            const selectedSoftware = document.querySelectorAll('input[name="software"]:checked');
+            
+            if (selectedSoftware.length === 0) {
+                // A simple alert is used as a custom modal would add significant code.
+                alert("Please select at least one software to download.");
+                return;
+            }
+
+            const button = this;
+            button.innerHTML = 'Opening Downloads...';
+            button.disabled = true;
+
+            setTimeout(() => {
+                selectedSoftware.forEach((software, index) => {
+                    setTimeout(() => {
+                        window.open(software.value, '_blank');
+                    }, index * 300); // Stagger downloads slightly
+                });
+                
+                // Reset button after downloads are initiated
+                setTimeout(() => {
+                    button.innerHTML = `<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> Download Selected`;
+                    button.disabled = false;
+                }, 1000);
+            }, 500);
+        });
+        
+        // --- VS Code Modal Functionality ---
+        const vscodeModal = document.getElementById('vscode-modal');
+        const openVscodeModalBtn = document.getElementById('vscode-config-btn');
+        const closeVscodeModalBtn = document.getElementById('close-vscode-modal-btn');
+        const copyBtn = document.getElementById('copy-code-btn');
+        const codeSnippetText = document.querySelector('#code-snippet-container code').innerText;
+
+        openVscodeModalBtn.addEventListener('click', () => {
+            vscodeModal.classList.remove('hidden');
+        });
+
+        closeVscodeModalBtn.addEventListener('click', () => {
+            vscodeModal.classList.add('hidden');
+        });
+        
+        vscodeModal.addEventListener('click', (event) => {
+            if (event.target === vscodeModal) {
+                vscodeModal.classList.add('hidden');
+            }
+        });
+
+        copyBtn.addEventListener('click', () => {
+            const textArea = document.createElement('textarea');
+            textArea.value = codeSnippetText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+
+            copyBtn.innerText = 'Copied!';
+            setTimeout(() => {
+                copyBtn.innerText = 'Copy';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
