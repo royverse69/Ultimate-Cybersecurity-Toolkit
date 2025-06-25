@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Tools Hub</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Use Inter as the default font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111111; /* A very dark grey */
+            color: #e5e7eb; /* Light gray text */
+        }
+
+        /* Main wrapper to structure the page with a sticky footer */
+        .page-wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        /* The main content area will grow to push the footer down */
+        .content-grow {
+            flex-grow: 1;
+        }
+
+        /* List container styling */
+        .list-container {
+            background-color: #1c1c1c;
+            border: 1px solid #2d2d2d;
+        }
+
+        /* Individual action button styling */
+        .action-button {
+            background-color: #373737;
+            border: 1px solid #4a4a4a;
+            transition: all 0.2s ease-in-out;
+        }
+        /* This rule applies the hover effect ONLY to the buttons */
+        .action-button:hover {
+            background-color: #4a4a4a;
+            border-color: #5a5a5a;
+            transform: scale(1.05);
+        }
+        
+        /* Main action buttons styling */
+        .main-action-btn {
+            transition: all 0.3s ease-in-out;
+        }
+         .main-action-btn:hover {
+            filter: brightness(1.1);
+            box-shadow: 0 0 20px rgba(129, 140, 248, 0.4);
+         }
+         
+         /* Modal styles */
+         .modal-content {
+             max-height: 80vh;
+             overflow-y: auto;
+         }
+    </style>
+</head>
+<body class="text-gray-300">
+
+    <div class="page-wrapper">
+        <div class="content-grow flex flex-col items-center justify-center p-4">
+            <!-- Header Section -->
+            <header class="text-center mb-8">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">Security Tools</h1>
+                <p class="text-lg text-gray-400">Essential cybersecurity utilities</p>
+            </header>
+
+            <!-- Action Buttons Section -->
+            <section class="text-center mb-8 w-full max-w-lg flex flex-col sm:flex-row gap-4 justify-center">
+                <!-- Updated Download Button linking to Google Drive -->
+                <a id="download-all-btn" href="https://drive.google.com/uc?export=download&id=1fwSlsvojzyMUox0xSxUauVvLLsi0Fiat" class="main-action-btn w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download All Tools
+                </a>
+                 <button id="how-to-use-btn" class="main-action-btn w-full sm:w-auto bg-[#373737] border border-[#4a4a4a] text-white font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    How to Use
+                </button>
+            </section>
+
+            <!-- List Layout -->
+            <main class="w-full max-w-lg">
+                <div class="list-container flex flex-col rounded-lg p-2 sm:p-4">
+
+                    <!-- List Item 1: Guardio -->
+                    <div class="flex items-center p-3">
+                        <div class="w-20 h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400">
+                            <span class="text-white font-bold text-sm tracking-wider">GUARDIO</span>
+                        </div>
+                        <div class="ml-4 flex-grow">
+                            <h2 class="font-semibold text-white">Guardio</h2>
+                            <p class="text-sm text-gray-400">Browser protection extension</p>
+                        </div>
+                        <a href="https://chromewebstore.google.com/detail/guardio-protection-for-ch/gjfpmkejnolcfklaaddjnckanhhgegla" target="_blank" rel="noopener noreferrer" class="action-button flex-shrink-0 text-white text-sm font-semibold py-2 px-5 rounded-lg">Install</a>
+                    </div>
+
+                    <!-- List Item 2: HitmanPro (Sophos) -->
+                    <div class="flex items-center p-3">
+                        <div class="w-20 h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-orange-500 to-red-500">
+                            <span class="text-white font-bold text-sm tracking-wider">SOPHOS</span>
+                        </div>
+                        <div class="ml-4 flex-grow">
+                            <h2 class="font-semibold text-white">HitmanPro</h2>
+                            <p class="text-sm text-gray-400">Advanced malware scanner</p>
+                        </div>
+                        <a href="https://download.sophos.com/endpoint/clients/HitmanPro_x64.exe" class="action-button flex-shrink-0 text-white text-sm font-semibold py-2 px-5 rounded-lg">Download</a>
+                    </div>
+
+                    <!-- List Item 3: Kaspersky Rescue -->
+                    <div class="flex items-center p-3">
+                        <div class="w-20 h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-green-500 to-emerald-400">
+                             <span class="text-white font-bold text-xs tracking-wider">KASPERSKY</span>
+                        </div>
+                        <div class="ml-4 flex-grow">
+                            <h2 class="font-semibold text-white">Kaspersky Rescue</h2>
+                            <p class="text-sm text-gray-400">Virus removal utility</p>
+                        </div>
+                         <a href="https://devbuilds.s.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe" class="action-button flex-shrink-0 text-white text-sm font-semibold py-2 px-5 rounded-lg">Download</a>
+                    </div>
+
+                    <!-- List Item 4: Norton Power Eraser -->
+                    <div class="flex items-center p-3">
+                        <div class="w-20 h-14 flex-shrink-0 flex items-center justify-center rounded-lg bg-gradient-to-br from-yellow-500 to-orange-400">
+                            <span class="text-white font-bold text-sm tracking-wider">NORTON</span>
+                        </div>
+                        <div class="ml-4 flex-grow">
+                            <h2 class="font-semibold text-white">Norton Power Eraser</h2>
+                            <p class="text-sm text-gray-400">Deep threat removal</p>
+                        </div>
+                        <a href="https://www.norton.com/npe_latest" class="action-button flex-shrink-0 text-white text-sm font-semibold py-2 px-5 rounded-lg">Download</a>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center py-8 text-gray-500 text-sm">
+            <p>&copy; <span id="current-year"></span> @royverse</p>
+        </footer>
+    </div>
+    
+    <!-- How to Use Modal -->
+    <div id="guide-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-[#1c1c1c] border border-[#2d2d2d] rounded-lg w-full max-w-2xl relative">
+            <button id="close-modal-btn" class="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <div class="modal-content p-6 text-left">
+                <h2 class="text-2xl font-bold text-white mb-4 text-center">Quick Start Guide</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="font-semibold text-lg text-white mb-2">🛡️ Before You Scan (Critical)</h3>
+                        <ul class="list-disc list-inside text-gray-400 space-y-1 text-sm">
+                            <li><strong class="text-gray-300">Backup Data:</strong> Save important files to an external drive.</li>
+                            <li><strong class="text-gray-300">Create Restore Point:</strong> Press `Windows Key + R`, type `rstrui.exe`, and create a restore point.</li>
+                            <li><strong class="text-gray-300">Close Programs:</strong> Shut down all non-essential applications to ensure a thorough scan.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-white mb-2">🎯 Recommended Scanning Strategy</h3>
+                         <ol class="list-decimal list-inside text-gray-400 space-y-2 text-sm">
+                            <li><strong class="text-gray-300">Guardio:</strong> Keep this browser extension active for continuous real-time protection.</li>
+                            <li><strong class="text-gray-300">Kaspersky (KVRT):</strong> Run first in emergencies or if your system is heavily infected. No installation needed.</li>
+                            <li><strong class="text-gray-300">HitmanPro (Sophos):</strong> Use as a powerful second-opinion scanner to catch threats others might miss.</li>
+                            <li><strong class="text-gray-300">Norton Power Eraser:</strong> Use as a last resort for stubborn threats, as it's very aggressive and may flag safe files.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // --- Static Setup ---
+        // Set the current year in the footer automatically
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // --- Modal Functionality ---
+        const guideModal = document.getElementById('guide-modal');
+        const openModalBtn = document.getElementById('how-to-use-btn');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        openModalBtn.addEventListener('click', () => {
+            guideModal.classList.remove('hidden');
+        });
+        
+        closeModalBtn.addEventListener('click', () => {
+            guideModal.classList.add('hidden');
+        });
+        
+        // Close modal if user clicks on the background overlay
+        guideModal.addEventListener('click', (event) => {
+            if(event.target === guideModal) {
+                 guideModal.classList.add('hidden');
+            }
+        });
+    </script>
+
+</body>
+</html>
