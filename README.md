@@ -37,11 +37,7 @@ You can try the Security Tools Hub live here:
 
 ---
 
-## 📸 Screenshots
 
-*(It is highly recommended to add screenshots of the main page and the "How to Use" modal here to showcase the project's interface.)*
-
----
 
 ## 🛠️ Technologies Used
 
